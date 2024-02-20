@@ -14,11 +14,11 @@ public interface ClientesRepository extends JpaRepository<Cliente, Integer>{
 	@Query(value = 
 			"SELECT c "
 			+ "FROM Cliente c "
-			+ "WHERE Upper(c.nome) LIKE (:nome)",
+			+ "WHERE Upper(c.nomeCompleto) LIKE (:nome)",
 			countQuery = 
 					"SELECT Count(c) "
 					+ "FROM Cliente c "
-					+ "WHERE Upper(c.nome) LIKE (:nome)")
+					+ "WHERE Upper(c.nomeCompleto) LIKE (:nome)")
 	public Page<Cliente> listarPor(String nome, Pageable paginacao);
 	
 	@Query(value = 

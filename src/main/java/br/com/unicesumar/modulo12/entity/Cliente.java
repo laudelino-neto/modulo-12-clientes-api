@@ -29,7 +29,7 @@ public class Cliente {
 	private String nomeCompleto;
 	
 	@Size(max = 30, message = "O documento é obrigatório")
-	@Column(name = "email")
+	@Column(name = "documento")
 	private String documento;
 	
 	@Size(max = 100, message = "O e-mail é obrigatório")
