@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,6 +33,7 @@ public class ClienteController {
 	@Autowired
 	private MapConverter converter;
 	
+	@PostMapping
 	public ResponseEntity<?> inserir(
 			@RequestBody
 			Cliente cliente){
@@ -41,6 +44,7 @@ public class ClienteController {
 				+ clienteSalvo.getId())).build();
 	}
 	
+	@PutMapping
 	public ResponseEntity<?> alterar(
 			@RequestBody
 			Cliente cliente){
@@ -72,8 +76,12 @@ public class ClienteController {
 		}
 
 		Page<Cliente> clientes = service.listarPor(nome, paginacao);
+		
+		if (!clientes.isEmpty()) {		
+			return ResponseEntity.ok(converter.toJsonList(clientes));		
+		}
 
-		return ResponseEntity.ok(converter.toJsonList(clientes));		
+		return ResponseEntity.noContent().build();
 
 	}	
 	
