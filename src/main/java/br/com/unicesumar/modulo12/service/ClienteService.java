@@ -1,11 +1,12 @@
 package br.com.unicesumar.modulo12.service;
 
-import org.postgresql.shaded.com.ongres.scram.common.util.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+
+import com.google.common.base.Preconditions;
 
 import br.com.unicesumar.modulo12.entity.Cliente;
 import br.com.unicesumar.modulo12.repository.ClientesRepository;
